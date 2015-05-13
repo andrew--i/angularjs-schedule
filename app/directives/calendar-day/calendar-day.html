@@ -1,3 +1,15 @@
-<span class="day"
-      ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selectedDay) }"
-      >{{day.number}}</span>
+<div class="day"
+      ng-class="{
+      today: day.isToday,
+      'different-month': !day.isCurrentMonth,
+      selected: isSelectedDay,
+      'white-day': day.dayType === 0,
+      'green-day': day.dayType === 1,
+      'orange-day': day.dayType === 2,
+      'red-day': day.dayType === 3
+      }"
+  >{{day.number}}
+  <span class="day-tooltip">
+    Hello world
+  </span>
+</div>

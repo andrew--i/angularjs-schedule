@@ -15,7 +15,7 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
         while (!done) {
           scope.weeks.push({days: _buildWeek(date.clone(), month)});
           date.add(1, "w");
-          done = count++ > 4
+          done = count++ > 4;
         }
       }
 
@@ -27,12 +27,29 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
             number: date.date() < 9 ? "0" + date.date() : date.date(),
             isCurrentMonth: date.month() === month.month(),
             isToday: date.isSame(new Date(), "day"),
-            date: date
+            date: date,
+            dayType: generateRandom(4),
+            visitedPoints: createRandomVisitedPoint(),
+            sentPages: createRandomVisitedPoint(),
+            totalTime: createRandomTotalTime()
           });
           date = date.clone();
           date.add(1, "d");
         }
         return days;
+      }
+
+      function generateRandom(max) {
+        return Math.floor(Math.random() * max);
+      }
+
+      function createRandomTotalTime() {
+        return generateRandom(14) + ":" + generateRandom(60);
+      }
+
+      function createRandomVisitedPoint() {
+        var total = generateRandom(100);
+        return generateRandom(total) + " / " + total;
       }
 
       function _setMonth(month, scope) {
@@ -43,7 +60,16 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
         _buildMonth(scope, start, month);
       }
 
-      scope.selectedDay = moment();
+      scope.selectedDay = undefined;
+
+      scope.isSelectedDay = function (day) {
+        return !scope.selectedDay ? false : day.date.format('DD.MM') === scope.selectedDay.format('DD.MM');
+      };
+
+      scope.selectDay = function (day) {
+        if (day.dayType === 1)
+          scope.selectedDay = day.date;
+      };
 
       _setMonth(moment(), scope);
 
@@ -55,7 +81,7 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
 
       scope.previous = function () {
         var previous = scope.month.clone();
-        _setMonth(previous.month(previous.month() - 1), scope)
+        _setMonth(previous.month(previous.month() - 1), scope);
       };
     },
     controllerAs: "calendar"

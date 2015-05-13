@@ -5,10 +5,11 @@ angular.module('rbt.directives').directive('calendarDay', /*@ngInject*/function 
     templateUrl: "assets/view/calendar-day/calendar-day.html",
     scope: {
       day: "=",
-      selectedDay: "="
+      isSelectedDay: "=",
+      employeeDay: "="
     },
     link: function (scope) {
-      var s = scope;
+
     }
   };
 });
