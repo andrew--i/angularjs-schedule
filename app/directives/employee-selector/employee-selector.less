@@ -1,20 +1,35 @@
+@border-colour: #eaeaea;
+
 .emplpoyee-selector-container {
   background-color: white;
-  padding: 20px 20px 15px;
+  padding: 20px 0px 15px;
   border-left: solid 1px #ccc;
   border-right: solid 1px #ccc;
 
- .btn-download {
-   margin-left: 15px;
-   border-radius: 20px;
- }
-
-  .employee-selector {
-    width: 80%;
+  .btn-download {
     border-radius: 20px;
   }
 
-  .btn-download {
-    right: 15px;
+  .employee-selector {
+    border-radius: 20px;
+  }
+
+  .employee-info {
+    padding-left: 20px;
+    box-sizing: border-box;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 2.5 !important;
+
+  }
+
+  .employee-info-item {
+    border-right: dashed 1px @border-colour;
+    padding-right: 10px;
+    padding-left: 9px;
+    &:last-child {
+      border-right: none;
+    }
   }
 }

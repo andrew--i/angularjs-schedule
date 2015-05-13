@@ -1,0 +1,33 @@
+@border-colour: #eaeaea;
+
+.employee-statistic-item {
+  margin-top: 12px;
+  margin-bottom: 22px;
+  float: left;
+  color: #ababab;
+  background: white;
+  text-align: center;
+  width: 100%/7;
+  height: 100px;
+  line-height: 2 !important;
+  border-left: solid 1px @border-colour;
+  &:last-child {
+    border-right: solid 1px @border-colour;
+  }
+
+  > .employee-statistic-name {
+    padding-left: 20px;
+    line-height: 1 !important;
+    font-size: 1em;
+    word-break:break-all;
+    text-align: left;
+  }
+
+  > .employee-statistic-value {
+    text-align: left;
+    padding-left: 20px;
+    color: #ee3424;
+    line-height: 1.4 !important;
+    font-size: 3em;
+  }
+}

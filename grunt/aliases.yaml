@@ -29,7 +29,6 @@ production:
 server:
   description: 'Start developer server'
   tasks:
-    - 'configureProxies:server'
     - 'connect:server'
 serverWatch:
   description: 'Start developer server and start watch'

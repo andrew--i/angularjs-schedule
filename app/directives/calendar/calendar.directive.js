@@ -11,12 +11,11 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
 
       function _buildMonth(scope, start, month) {
         scope.weeks = [];
-        var done = false, date = start.clone(), monthIndex = date.month(), count = 0;
+        var done = false, date = start.clone(), count = 0;
         while (!done) {
           scope.weeks.push({days: _buildWeek(date.clone(), month)});
           date.add(1, "w");
-          done = count++ > 2 && monthIndex !== date.month();
-          monthIndex = date.month();
+          done = count++ > 4
         }
       }
 
