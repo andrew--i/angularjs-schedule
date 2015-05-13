@@ -24,7 +24,7 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
         for (var i = 0; i < 7; i++) {
           days.push({
             name: date.format("dd").substring(0, 2),
-            number: date.date() < 9 ? "0" + date.date() : date.date(),
+            number: date.date() < 10 ? "0" + date.date() : date.date(),
             isCurrentMonth: date.month() === month.month(),
             isToday: date.isSame(new Date(), "day"),
             date: date,
@@ -47,7 +47,7 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
       function createRandomTotalTime() {
         var hour = generateRandom(14);
         var minutes = generateRandom(60);
-        return (hour < 9 ? "0" + hour : hour) + ":" + (minutes < 9 ? "0" + minutes : minutes);
+        return (hour < 10 ? "0" + hour : hour) + ":" + (minutes < 10 ? "0" + minutes : minutes);
       }
 
       function createRandomVisitedPoint() {
