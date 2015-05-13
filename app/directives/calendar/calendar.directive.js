@@ -66,7 +66,7 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
       scope.selectedDay = undefined;
 
       scope.isSelectedDay = function (day) {
-        return !scope.selectedDay ? false : day.date.format('DD.MM') === scope.selectedDay.format('DD.MM');
+        return !scope.selectedDay ? false : day.date.format('DD.MM.YYYY') === scope.selectedDay.format('DD.MM.YYYY');
       };
 
       scope.selectDay = function (day) {
