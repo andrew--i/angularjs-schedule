@@ -43,6 +43,8 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
         _buildMonth(scope, start, month);
       }
 
+      scope.selectedDay = moment();
+
       _setMonth(moment(), scope);
 
 
@@ -56,9 +58,6 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
         _setMonth(previous.month(previous.month() - 1), scope)
       };
     },
-    controllerAs: "calendar",
-    controller: function ($scope) {
-
-    }
+    controllerAs: "calendar"
   };
 });
