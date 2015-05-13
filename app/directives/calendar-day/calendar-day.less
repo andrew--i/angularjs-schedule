@@ -12,7 +12,6 @@
   padding-right: 6px;
   padding-top: 6px;
   user-select: none;
-  cursor: pointer;
 
   &.different-month {
     color: #C0C0C0;
@@ -24,6 +23,7 @@
 
   &.green-day {
     background-color: #add58b;
+    cursor: pointer;
   }
 
   &.orange-day {
@@ -34,20 +34,27 @@
     background-color: #e3746a;
   }
 
-  > span.day-tooltip-bottom {
+  .employee-day-tooltip {
     position: absolute;
-    width: 140px;
+    width: 200px;
     color: black;
     background: white;
-    height: 100px;
+    height: 170px;
     line-height: 100px;
     text-align: center;
     visibility: hidden;
     border-radius: 10px;
-    box-shadow: 0px 0px 22px -6px black,
+    box-shadow: 0px 0px 22px -6px black;
+    :last-child {
+      border-bottom: none
+    }
   }
 
-  > span.day-tooltip-bottom:after {
+  > div.day-tooltip-bottom {
+    .employee-day-tooltip
+  }
+
+  > div.day-tooltip-bottom:after {
     content: '';
     position: absolute;
     bottom: 100%;
@@ -60,20 +67,11 @@
     border-left: 8px solid transparent;
   }
 
-  > span.day-tooltip-top {
-    position: absolute;
-    width: 140px;
-    color: black;
-    background: white;
-    height: 100px;
-    line-height: 100px;
-    text-align: center;
-    visibility: hidden;
-    border-radius: 10px;
-    box-shadow: 0px 0px 22px -6px black,
+  > div.day-tooltip-top {
+    .employee-day-tooltip
   }
 
-  > span.day-tooltip-top:after {
+  > div.day-tooltip-top:after {
     content: '';
     position: absolute;
     top: 100%;
@@ -89,18 +87,45 @@
   &.selected {
     box-shadow: 0px 0px 24px -2px black,
     inset @border-colour -1px -1px 0 0 !important;
-    > span.day-tooltip-bottom {
+    > div.day-tooltip-bottom {
       visibility: visible;
-      margin-top: 85px;
-      margin-left: -100%/7 + 1px;
+      margin-top: 65px;
       z-index: 999;
     }
-    > span.day-tooltip-top {
+    > div.day-tooltip-top {
       visibility: visible;
-      margin-top: -115px;
-      margin-left: -100%/7 + 1px;
+      margin-top: -210px;
       z-index: 999;
     }
+  }
+
+  .day-tooltip-item {
+    width: 100%;
+    height: 170/3px;
+    vertical-align: middle;
+    line-height: 170/3px;
+    text-align: left;
+    left: 0;
+    border-bottom: solid 1px @border-colour;
+    margin: 0 0 0 0;
+
+    > div.tooltip-item-value {
+      padding-left: 15px;
+      padding-right: 5px;
+      font-size: 2em;
+      .red-tooltip-value {
+        color: red;
+      }
+    }
+
+    > div.tooltip-item-name {
+      color: #c2c2c2;
+      font-size: 0.9em;
+      line-height: 15px;
+      padding-top: 15px;
+      padding-left: 0px;
+    }
+
   }
 
 }

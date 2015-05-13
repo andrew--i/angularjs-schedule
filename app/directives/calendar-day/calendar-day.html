@@ -9,9 +9,35 @@
       'red-day': day.dayType === 3
       }"
   >{{day.number}}
-  <span ng-class="{
-  'day-tooltip-top': day.weekCount > 2,
-  'day-tooltip-bottom': day.weekCount <= 2}">
-  Hello world
-  </span>
+  <div ng-class="{
+  'day-tooltip-top': day.weekNumber > 2,
+  'day-tooltip-bottom': day.weekNumber <= 2}">
+
+    <div class="day-tooltip-item row">
+      <div class="tooltip-item-value col-sm-7">
+        <span class="red-tooltip-value">{{day.visitedPoints.current}} </span> / {{day.visitedPoints.total}}
+      </div>
+      <div class="tooltip-item-name col-sm-5">
+        Точек маршрута
+      </div>
+    </div>
+
+    <div class="day-tooltip-item row">
+      <div class="tooltip-item-value col-sm-7">
+        <span class="red-tooltip-value">{{day.questionnaires.current}} </span> / {{day.questionnaires.total}}
+      </div>
+      <div class="tooltip-item-name col-sm-5">
+        Опросных листов
+      </div>
+    </div>
+
+    <div class="day-tooltip-item row">
+      <div class="tooltip-item-value col-sm-7">
+        <span class="red-tooltip-value">{{day.totalTime}} </span>
+      </div>
+      <div class="tooltip-item-name col-sm-5">
+        Отработано времени
+      </div>
+    </div>
+  </div>
 </div>

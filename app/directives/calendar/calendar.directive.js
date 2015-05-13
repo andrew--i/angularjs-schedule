@@ -28,10 +28,10 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
             isCurrentMonth: date.month() === month.month(),
             isToday: date.isSame(new Date(), "day"),
             date: date,
-            weekCount: weekCount,
+            weekNumber: weekCount,
             dayType: generateRandom(4),
             visitedPoints: createRandomVisitedPoint(),
-            sentPages: createRandomVisitedPoint(),
+            questionnaires: createRandomVisitedPoint(),
             totalTime: createRandomTotalTime()
           });
           date = date.clone();
@@ -45,12 +45,14 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
       }
 
       function createRandomTotalTime() {
-        return generateRandom(14) + ":" + generateRandom(60);
+        var hour = generateRandom(14);
+        var minutes = generateRandom(60);
+        return (hour < 9 ? "0" + hour : hour) + ":" + (minutes < 9 ? "0" + minutes : minutes);
       }
 
       function createRandomVisitedPoint() {
         var total = generateRandom(100);
-        return generateRandom(total) + " / " + total;
+        return {current: generateRandom(total), total: total};
       }
 
       function _setMonth(month, scope) {
