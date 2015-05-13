@@ -6,10 +6,7 @@ angular.module('rbt.directives').directive('calendarDay', /*@ngInject*/function 
     scope: {
       day: "=",
       isSelectedDay: "=",
-      employeeDay: "="
-    },
-    link: function (scope) {
-
+      isInfoIconDay: "="
     }
   };
 });

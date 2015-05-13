@@ -1,5 +1,5 @@
 'use strict';
-angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () {
+angular.module('rbt.directives').directive('calendar', /*@ngInject*/function ($timeout) {
   return {
     restrict: 'E',
     templateUrl: "assets/view/calendar/calendar.html",
@@ -69,9 +69,10 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
         return !scope.selectedDay ? false : day.date.format('DD.MM.YYYY') === scope.selectedDay.format('DD.MM.YYYY');
       };
 
-      scope.selectDay = function (day) {
+      scope.selectDay = function (day, event) {
         if (day.dayType === 1)
           scope.selectedDay = day.date;
+        event.stopPropagation();
       };
 
       _setMonth(moment(), scope);
@@ -86,6 +87,38 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
         var previous = scope.month.clone();
         _setMonth(previous.month(previous.month() - 1), scope);
       };
+
+      scope.isInfoIconDay = function (day) {
+        if (scope.infoIconDay && scope.infoIconDay.day && scope.infoIconDay.show)
+          return day.date.format('DD.MM.YYYY') === scope.infoIconDay.day.date.format('DD.MM.YYYY');
+        return false;
+      };
+
+      scope.prepareShowDayInfoIcon = function (day) {
+        scope.infoIconDay = {
+          day: day,
+          show: false
+        };
+        scope.showDayInfoIconTimeout = $timeout(showInfoIcon, 700);
+      };
+
+      scope.cancelShowDayInfoIcon = function () {
+        scope.infoIconDay.day = undefined;
+        $timeout.cancel(scope.showDayInfoIconTimeout);
+        hideInfoIcon();
+      };
+
+      function showInfoIcon() {
+        if (scope.infoIconDay.day) {
+          scope.infoIconDay.show = true;
+          scope.selectedDay = scope.infoIconDay.day.date;
+        }
+      }
+
+      function hideInfoIcon() {
+        scope.infoIconDay.day = undefined;
+      }
+
     },
     controllerAs: "calendar"
   };

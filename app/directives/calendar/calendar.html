@@ -19,7 +19,11 @@
 
 
 <div class="week" ng-repeat="week in weeks">
-  <calendar-day is-selected-day="isSelectedDay(day)" day=day
-                ng-click="selectDay(day)"
+  <calendar-day day=day
+                is-selected-day="isSelectedDay(day)"
+                is-info-icon-day="isInfoIconDay(day)"
+                ng-mouseenter="prepareShowDayInfoIcon(day)"
+                ng-mouseleave="cancelShowDayInfoIcon()"
+                ng-click="selectDay(day, $event)"
                 ng-repeat="day in week.days"></calendar-day>
 </div>

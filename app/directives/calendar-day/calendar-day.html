@@ -1,4 +1,5 @@
 <div class="day"
+     ng-click="isShowDayInfo = true"
      ng-class="{
       today: day.isToday,
       'different-month': !day.isCurrentMonth,
@@ -6,9 +7,14 @@
       'white-day': day.dayType === 0,
       'green-day': day.dayType === 1,
       'orange-day': day.dayType === 2,
-      'red-day': day.dayType === 3
+      'red-day': day.dayType === 3,
+      'day-info': isShowDayInfo && isSelectedDay && day.dayType === 1,
+      'day-info-icon': isInfoIconDay
       }"
   >{{day.number}}
+  <div ng-if="isInfoIconDay">
+    info icon
+  </div>
   <div ng-class="{
   'day-tooltip-top': day.weekNumber > 2,
   'day-tooltip-bottom': day.weekNumber <= 2}">
