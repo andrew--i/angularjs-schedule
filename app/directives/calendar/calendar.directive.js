@@ -13,13 +13,13 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
         scope.weeks = [];
         var done = false, date = start.clone(), count = 0;
         while (!done) {
-          scope.weeks.push({days: _buildWeek(date.clone(), month)});
+          scope.weeks.push({days: _buildWeek(date.clone(), month, count)});
           date.add(1, "w");
           done = count++ > 4;
         }
       }
 
-      function _buildWeek(date, month) {
+      function _buildWeek(date, month, weekCount) {
         var days = [];
         for (var i = 0; i < 7; i++) {
           days.push({
@@ -28,6 +28,7 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function () 
             isCurrentMonth: date.month() === month.month(),
             isToday: date.isSame(new Date(), "day"),
             date: date,
+            weekCount: weekCount,
             dayType: generateRandom(4),
             visitedPoints: createRandomVisitedPoint(),
             sentPages: createRandomVisitedPoint(),

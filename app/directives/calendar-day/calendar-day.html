@@ -1,5 +1,5 @@
 <div class="day"
-      ng-class="{
+     ng-class="{
       today: day.isToday,
       'different-month': !day.isCurrentMonth,
       selected: isSelectedDay,
@@ -9,7 +9,9 @@
       'red-day': day.dayType === 3
       }"
   >{{day.number}}
-  <span class="day-tooltip">
-    Hello world
+  <span ng-class="{
+  'day-tooltip-top': day.weekCount > 2,
+  'day-tooltip-bottom': day.weekCount <= 2}">
+  Hello world
   </span>
 </div>
