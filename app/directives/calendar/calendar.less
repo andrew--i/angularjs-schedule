@@ -1,0 +1,122 @@
+.vertical-centre (@height) {
+  height: @height;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.border-box {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+@border-colour: #CCC;
+calendar {
+  display: block;
+  .border-box;
+  background: white;
+  width: 100%;
+
+  @secondary-colour: #f3f3f3;
+  @spacing: 10px;
+  @icon-width: 40px;
+  @header-height: 48px;
+
+  > div.header {
+    float: left;
+    width: 100%;
+    background: @secondary-colour;
+    height: @header-height;
+    color: black;
+    border-left: solid 1px @border-colour;
+    border-right: solid 1px @border-colour;
+
+
+    > * {
+      .vertical-centre(@header-height);
+      line-height: @header-height !important;
+    }
+
+    > i {
+      float: left;
+      width: @icon-width;
+      font-size: 2em;
+      font-weight: bold;
+      position: relative;
+      .border-box;
+      padding: 0 @spacing;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    > i.fa-angle-left {
+      text-align: left;
+      font-size: 2em;
+      color: #ef5345;
+    }
+
+    > i.fa-angle-right {
+      text-align: right;
+      margin-left: @icon-width*-1;
+      font-size: 2em;
+      color: #ef5345;
+    }
+
+    > span {
+      float: left;
+      width: 100%;
+      font-weight: bold;
+      text-transform: capitalize;
+      .border-box;
+      padding-left: @icon-width+@spacing;
+      margin-left: @icon-width*-1;
+      text-align: center;
+      padding-right: @icon-width;
+      color: inherit;
+    }
+  }
+  > div.week {
+    float: left;
+    width: 100%;
+
+    &:last-child {
+      border-bottom: solid 1px @border-colour;
+    }
+
+    > span.day {
+      float: left;
+      width: 100%/7;
+      .border-box;
+      border-left: solid 1px @border-colour;
+      border-top: solid 1px @border-colour;
+      font-size: 1em;
+      text-align: right;
+      .vertical-centre(80px);
+      background: white;
+      color: black;
+      padding-right: 6px;
+      padding-top: 6px;
+      &.different-month {
+        color: #C0C0C0;
+      }
+
+      &:last-child {
+        border-right: solid 1px @border-colour;
+      }
+    }
+
+    &.names > span {
+      float: left;
+      color: #ababab;
+      background: white;
+      text-align: center;
+      width: 100%/7;
+      .border-box;
+      .vertical-centre(30px);
+      line-height: 2 !important;
+      border-left: solid 1px @border-colour;
+      &:last-child {
+        border-right: solid 1px @border-colour;
+      }
+    }
+  }
+}

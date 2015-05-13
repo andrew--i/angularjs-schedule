@@ -1,0 +1,44 @@
+default:
+  description:  'development tasks'
+  tasks:
+    - serverWatch
+
+
+develop:
+  description: 'Devoplop build'
+  tasks:
+    - 'clean'
+    - 'includeSource'
+    - 'buildStyle'
+    - 'copy:html'
+    - 'copy:templates'
+
+production:
+  description: 'Production build'
+  tasks:
+    - 'clean'
+    - 'copy:templates'
+    - 'buildStyle'
+    - 'includeSource'
+    - 'useminPrepare'
+    - 'concat'
+    - 'ngAnnotate'
+    - 'cssmin'
+    - 'uglify'
+    - 'usemin'
+server:
+  description: 'Start developer server'
+  tasks:
+    - 'configureProxies:server'
+    - 'connect:server'
+serverWatch:
+  description: 'Start developer server and start watch'
+  tasks:
+    - 'concurrent:serverWatch'
+buildStyle:
+  description: 'Build less'
+  tasks:
+    - 'concat:buildStyle'
+    - 'less'
+    - 'autoprefixer'
+    - 'copy:styles'

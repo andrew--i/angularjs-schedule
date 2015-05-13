@@ -1,0 +1,25 @@
+<div class="header">
+  <i class="fa fa-angle-left" ng-click="previous()">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </i>
+  <span>{{month.format("MMMM YYYY")}}</span>
+  <i class="fa fa-angle-right" ng-click="next()">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </i>
+</div>
+<div class="week names">
+  <span>Понедельник</span>
+  <span>Вторник</span>
+  <span>Среда</span>
+  <span>Четверг</span>
+  <span>Пятница</span>
+  <span>Суббота</span>
+  <span>Воскресенье</span>
+</div>
+
+
+<div class="week" ng-repeat="week in weeks">
+  <span class="day"
+        ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected) }"
+        ng-repeat="day in week.days">{{day.number}}</span>
+</div>
