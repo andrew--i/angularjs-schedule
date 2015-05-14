@@ -8,13 +8,11 @@
       'green-day': day.dayType === 1,
       'orange-day': day.dayType === 2,
       'red-day': day.dayType === 3,
-      'day-info': isShowDayInfo && isSelectedDay && day.dayType === 1,
-      'day-info-icon': isInfoIconDay
+      'day-info': isShowDayInfo && isSelectedDay && day.dayType === 1
       }"
-  >{{day.number}}
-  <div ng-if="isInfoIconDay">
-    info icon
-  </div>
+  >
+  <span ng-if="isInfoIconDay" class="glyphicon glyphicon-info-sign day-info-icon"></span>
+  {{day.number}}
   <div ng-class="{
   'day-tooltip-top': day.weekNumber > 2,
   'day-tooltip-bottom': day.weekNumber <= 2}">
