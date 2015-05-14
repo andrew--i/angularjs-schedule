@@ -66,12 +66,19 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function ($t
       scope.selectedDay = undefined;
 
       scope.isSelectedDay = function (day) {
-        return !scope.selectedDay ? false : day.date.format('DD.MM.YYYY') === scope.selectedDay.format('DD.MM.YYYY');
+        return isDateEquals(scope.selectedDay, day.date);
       };
+
+      function isDateEquals(d1, d2) {
+        if (!d1 || !d2)
+          return false;
+        return d1.format("DD.MM.YYYY") === d2.format("DD.MM.YYYY");
+      }
 
       scope.selectDay = function (day, event) {
         if (day.dayType === 1)
           scope.selectedDay = day.date;
+        scope.employeeInfoDay = day.date;
         event.stopPropagation();
       };
 
@@ -90,7 +97,7 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function ($t
 
       scope.isInfoIconDay = function (day) {
         if (scope.infoIconDay && scope.infoIconDay.day && scope.infoIconDay.show)
-          return day.date.format('DD.MM.YYYY') === scope.infoIconDay.day.date.format('DD.MM.YYYY');
+          return isDateEquals(day.date, scope.infoIconDay.day.date)
         return false;
       };
 
@@ -118,6 +125,16 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function ($t
       function hideInfoIcon() {
         scope.infoIconDay.day = undefined;
       }
+
+      scope.isEmployeeInfoDay = function (day) {
+        return isDateEquals(day.date, scope.employeeInfoDay);
+      };
+
+      scope.$watch("selectedDay", function () {
+        if (!isDateEquals(scope.selectedDay, scope.employeeInfoDay)) {
+          scope.employeeInfoDay = undefined;
+        }
+      });
 
     },
     controllerAs: "calendar"
