@@ -20,7 +20,38 @@
        ng-class="{
   'day-tooltip-top': day.weekNumber > 2,
   'day-tooltip-bottom': day.weekNumber <= 2}">
-    hello world
+    <div class="day-edit-item row">
+      <div class="col-sm-3">
+        <div class="green-circle"></div>
+      </div>
+      <div class="tooltip-item-name col-sm-9">
+        Рабочий день
+      </div>
+    </div>
+    <div class="day-edit-item row">
+      <div class="col-sm-3">
+        <div class="white-circle"></div>
+      </div>
+      <div class="tooltip-item-name col-sm-9">
+        Не рабочий день
+      </div>
+    </div>
+    <div class="day-edit-item row">
+      <div class="col-sm-3">
+        <div class="orange-circle"></div>
+      </div>
+      <div class="tooltip-item-name col-sm-9">
+        Пропуск
+      </div>
+    </div>
+    <div class="day-edit-item row">
+      <div class="col-sm-3">
+        <div class="red-circle"></div>
+      </div>
+      <div class="tooltip-item-name col-sm-9">
+        Прогул
+      </div>
+    </div>
   </div>
 
   <div ng-show="isEmployeeInfoDay && isSelectedDay && !isEditDay && day.dayType === 1"
