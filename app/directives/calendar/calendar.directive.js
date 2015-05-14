@@ -97,7 +97,7 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function ($t
 
       scope.isInfoIconDay = function (day) {
         if (scope.infoIconDay && scope.infoIconDay.day && scope.infoIconDay.show)
-          return isDateEquals(day.date, scope.infoIconDay.day.date)
+          return isDateEquals(day.date, scope.infoIconDay.day.date);
         return false;
       };
 
@@ -106,14 +106,14 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function ($t
           day: day,
           show: false
         };
-        scope.showDayInfoIconTimeout = $timeout(showInfoIcon, 700);
+        scope.showDayInfoIconTimeout = $timeout(showInfoIcon, 300);
       };
 
-      scope.cancelShowDayInfoIcon = function () {
-        scope.infoIconDay.day = undefined;
+      function cancelShowDayInfoIcon() {
+        if (scope.infoIconDay)
+          scope.infoIconDay.day = undefined;
         $timeout.cancel(scope.showDayInfoIconTimeout);
-        hideInfoIcon();
-      };
+      }
 
       function showInfoIcon() {
         if (scope.infoIconDay.day) {
@@ -122,17 +122,16 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function ($t
         }
       }
 
-      function hideInfoIcon() {
-        scope.infoIconDay.day = undefined;
-      }
-
       scope.isEmployeeInfoDay = function (day) {
         return isDateEquals(day.date, scope.employeeInfoDay);
       };
 
-      scope.$watch("selectedDay", function () {
+      scope.$watch("selectedDay", function (newValue) {
         if (!isDateEquals(scope.selectedDay, scope.employeeInfoDay)) {
           scope.employeeInfoDay = undefined;
+        }
+        if (!newValue) {
+          cancelShowDayInfoIcon();
         }
       });
 

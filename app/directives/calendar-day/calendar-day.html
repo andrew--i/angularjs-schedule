@@ -7,14 +7,26 @@
       'green-day': day.dayType === 1,
       'orange-day': day.dayType === 2,
       'red-day': day.dayType === 3,
-      'day-info': isEmployeeInfoDay && isSelectedDay && day.dayType === 1
+      'day-info': isEmployeeInfoDay && isSelectedDay && !isEditDay && day.dayType === 1,
+      'edit-day': isEditDay && isSelectedDay
       }">
-  <span ng-if="isInfoIconDay" class="glyphicon glyphicon-info-sign day-info-icon"></span>
+  <span ng-if="isEditDay ? true : isInfoIconDay"
+        class="glyphicon glyphicon-info-sign day-info-icon"
+        ng-click="editEmployeeDay($event)"></span>
   {{day.number}}
-  <div ng-class="{
+
+
+  <div ng-show="isEditDay && isSelectedDay"
+       ng-class="{
   'day-tooltip-top': day.weekNumber > 2,
   'day-tooltip-bottom': day.weekNumber <= 2}">
+    hello world
+  </div>
 
+  <div ng-show="isEmployeeInfoDay && isSelectedDay && !isEditDay && day.dayType === 1"
+       ng-class="{
+  'day-tooltip-top': day.weekNumber > 2,
+  'day-tooltip-bottom': day.weekNumber <= 2}">
     <div class="day-tooltip-item row">
       <div class="tooltip-item-value col-sm-7">
         <span class="red-tooltip-value">{{day.visitedPoints.current}} </span> / {{day.visitedPoints.total}}
@@ -23,7 +35,6 @@
         Точек маршрута
       </div>
     </div>
-
     <div class="day-tooltip-item row">
       <div class="tooltip-item-value col-sm-7">
         <span class="red-tooltip-value">{{day.questionnaires.current}} </span> / {{day.questionnaires.total}}
@@ -32,7 +43,6 @@
         Опросных листов
       </div>
     </div>
-
     <div class="day-tooltip-item row">
       <div class="tooltip-item-value col-sm-7">
         <span class="red-tooltip-value">{{day.totalTime}} </span>
