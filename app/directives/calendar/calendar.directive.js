@@ -106,13 +106,12 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function ($t
           day: day,
           show: false
         };
-        scope.showDayInfoIconTimeout = $timeout(showInfoIcon, 300);
+        showInfoIcon();
       };
 
       function cancelShowDayInfoIcon() {
         if (scope.infoIconDay)
           scope.infoIconDay.day = undefined;
-        $timeout.cancel(scope.showDayInfoIconTimeout);
       }
 
       function showInfoIcon() {
