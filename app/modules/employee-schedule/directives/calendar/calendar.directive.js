@@ -1,8 +1,8 @@
 'use strict';
-angular.module('rbt.directives').directive('calendar', /*@ngInject*/function ($timeout) {
+angular.module('rbt.employee-schedule').directive('calendar', /*@ngInject*/function ($timeout) {
   return {
     restrict: 'E',
-    templateUrl: "assets/view/calendar/calendar.html",
+    templateUrl: "assets/view/employee-schedule/directives/calendar/calendar.html",
     link: function (scope) {
 
       function _removeTime(date) {
@@ -101,17 +101,18 @@ angular.module('rbt.directives').directive('calendar', /*@ngInject*/function ($t
         return false;
       };
 
-      scope.prepareShowDayInfoIcon = function (day) {
+      scope.startShowDayInfoIcon = function (day) {
         scope.infoIconDay = {
           day: day,
           show: false
         };
-        showInfoIcon();
+        scope.showDayInfoIconTimeout = $timeout(showInfoIcon, 300);
       };
 
       function cancelShowDayInfoIcon() {
         if (scope.infoIconDay)
           scope.infoIconDay.day = undefined;
+        $timeout.cancel(scope.showDayInfoIconTimeout);
       }
 
       function showInfoIcon() {

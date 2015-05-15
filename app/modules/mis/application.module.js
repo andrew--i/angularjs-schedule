@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('rbt.mis', ['rbt.core']);
+angular.module('rbt.mis', ['rbt.core', 'rbt.employee-schedule']);

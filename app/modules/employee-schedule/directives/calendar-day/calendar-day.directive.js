@@ -1,8 +1,8 @@
 'use strict';
-angular.module('rbt.directives').directive('calendarDay', /*@ngInject*/function () {
+angular.module('rbt.employee-schedule').directive('calendarDay', /*@ngInject*/function () {
   return {
     restrict: 'E',
-    templateUrl: "assets/view/calendar-day/calendar-day.html",
+    templateUrl: "assets/view/employee-schedule/directives/calendar-day/calendar-day.html",
     scope: {
       day: "=",
       isSelectedDay: "=",
