@@ -29,6 +29,14 @@ module.exports = {
         cwd: 'app/directives/'
       }]
   },
+  fonts: {
+    files: [{
+      expand: true,
+      dest: 'dist/fonts',
+      src: '*',
+      cwd: 'bower_components/bootstrap/dist/fonts/'
+    }]
+  },
   html: {
     files: [{
       expand: true,

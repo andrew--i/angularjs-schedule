@@ -18,6 +18,7 @@ production:
   tasks:
     - 'clean'
     - 'copy:templates'
+    - 'copy:fonts'
     - 'buildStyle'
     - 'includeSource'
     - 'useminPrepare'
