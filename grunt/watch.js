@@ -19,7 +19,9 @@ module.exports = {
   },
   workplaceTemplates: {
     files: ['workplace/**/*.html'],
-    tasks: []
+    tasks: [
+      'develop'
+    ]
   },
   styles: {
     files: [

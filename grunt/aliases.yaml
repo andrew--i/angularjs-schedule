@@ -10,6 +10,7 @@ develop:
     - 'clean'
     - 'includeSource'
     - 'buildStyle'
+    - 'copy:assets'
     - 'copy:html'
     - 'copy:templates'
 
@@ -19,6 +20,7 @@ production:
     - 'clean'
     - 'copy:templates'
     - 'copy:fonts'
+    - 'copy:assets'
     - 'buildStyle'
     - 'includeSource'
     - 'useminPrepare'

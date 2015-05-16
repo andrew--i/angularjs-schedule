@@ -1,27 +1,21 @@
 'use strict';
-angular.module('rbt.employee-schedule').factory('employeeSchedule', function ($q, $timeout, DAY_TYPES) {
+angular.module('rbt.employee-schedule').factory('employeeSchedule', function ($q, $timeout) {
 
   var employeeSchedule = [];
   var receiveSchedulePromise = undefined;
-  var workDays = undefined;
 
   return {
-    getEmployeeSchedule: getSchedule,
-    getWorkDays: getWorkDays
-
+    getEmployeeSchedule: getSchedule
   };
 
-  function getWorkDays() {
-    return workDays;
-  }
 
   function getSchedule(employeeId, month) {
-    workDays = undefined;
     var employeeSchedulePromise = $q.defer();
-    if (receiveSchedulePromise)
+    if (receiveSchedulePromise) {
       $timeout.cancel(receiveSchedulePromise);
+    }
     receiveSchedulePromise = $timeout(function () {
-      workDays = 0;
+
       employeeSchedule = buildMonth(month);
       employeeSchedulePromise.resolve(employeeSchedule);
       receiveSchedulePromise = undefined;
@@ -39,7 +33,7 @@ angular.module('rbt.employee-schedule').factory('employeeSchedule', function ($q
     var days = [];
     var done = false, date = start.clone(), count = 0;
     while (!done) {
-      angular.forEach(buildWeek(date.clone()), function (item) {
+      angular.forEach(buildWeek(date.clone(), month), function (item) {
         days.push(item);
       });
       date.add(1, "w");
@@ -48,20 +42,19 @@ angular.module('rbt.employee-schedule').factory('employeeSchedule', function ($q
     return days;
   }
 
-  function buildWeek(date) {
+  function buildWeek(date, month) {
     var days = [];
     for (var i = 0; i < 7; i++) {
-      var dayType = generateRandom(4);
-      if (dayType == DAY_TYPES.GREEN) {
-        workDays++;
+      if (date.month() === month.month()) {
+        var dayType = generateRandom(4);
+        days.push({
+          date: date,
+          dayType: dayType,
+          visitedPoints: createRandomVisitedPoint(),
+          questionnaires: createRandomVisitedPoint(),
+          totalTime: createRandomTotalTime()
+        });
       }
-      days.push({
-        date: date,
-        dayType: dayType,
-        visitedPoints: createRandomVisitedPoint(),
-        questionnaires: createRandomVisitedPoint(),
-        totalTime: createRandomTotalTime()
-      });
 
       date = date.clone();
       date.add(1, "d");
@@ -76,7 +69,7 @@ angular.module('rbt.employee-schedule').factory('employeeSchedule', function ($q
   function createRandomTotalTime() {
     var hour = generateRandom(14);
     var minutes = generateRandom(60);
-    return (hour < 10 ? "0" + hour : hour) + ":" + (minutes < 10 ? "0" + minutes : minutes);
+    return hour * 60 + minutes;
   }
 
   function createRandomVisitedPoint() {

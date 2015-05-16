@@ -30,7 +30,6 @@ calendar {
     border-left: solid 1px @border-colour;
     border-right: solid 1px @border-colour;
 
-
     > * {
       .vertical-centre(@header-height);
       line-height: @header-height !important;
@@ -40,7 +39,7 @@ calendar {
       float: left;
       width: @icon-width;
       font-size: 2em;
-      font-weight: bold;
+
       position: relative;
       .border-box;
       padding: 0 @spacing;
@@ -64,14 +63,14 @@ calendar {
     > span {
       float: left;
       width: 100%;
-      font-weight: bold;
+      font-size: 18pt;
       text-transform: capitalize;
       .border-box;
       padding-left: @icon-width+@spacing;
       margin-left: @icon-width*-1;
       text-align: center;
       padding-right: @icon-width;
-      color: inherit;
+      color: #2d2d2d;
     }
   }
   > div.week {
@@ -84,9 +83,10 @@ calendar {
 
     &.names > span {
       float: left;
-      color: #ababab;
+      color: rgba(46, 46, 46, 0.5);
       background: white;
       text-align: center;
+      font-size: 12pt;
       width: 100%/7;
       .border-box;
       .vertical-centre(30px);
@@ -94,6 +94,12 @@ calendar {
       border-left: solid 1px @border-colour;
       &:last-child {
         border-right: solid 1px @border-colour;
+      }
+
+      font-family: arial, sans-serif;
+
+      &.output-day {
+        color: rgba(238, 52, 35, 0.8);
       }
     }
   }

@@ -4,17 +4,16 @@
   .border-box;
   border: none;
   position: relative;
-  //box-shadow: inset -1px -1px 0 0 @border-colour;
-  font-size: 1em;
+  font-size: 15pt;
   text-align: right;
   .vertical-centre(80px);
   background: white;
-  color: black;
+  color: rgb(45, 45, 45);
   padding-right: 6px;
   padding-top: 6px;
   user-select: none;
   &.different-month {
-    color: #C0C0C0;
+    color: rgba(45, 45, 45, 0.4);
   }
 
   &.white-day {
@@ -85,7 +84,7 @@
   }
 
   &.selected {
-    box-shadow: 0px 1px 18px rgba(1,1,1,0.25);
+    box-shadow: 0px 1px 18px rgba(1, 1, 1, 0.25);
     position: relative;
     z-index: 100;
   }
@@ -117,14 +116,15 @@
   }
 
   > span.day-info-icon {
+    background-image: url("info_icon.png");
+    width: 19px;
+    height: 19px;
     position: relative;
     float: left;
     top: 45px;
-    left: 15px;
-    background: transparent;
+    left: 13px;
     color: white;
     cursor: pointer;
-    font-size: 1.3em;
   }
 
   .day-tooltip-item {
@@ -206,6 +206,7 @@
   }
 
 }
+
 .day::after {
   content: '';
   width: 1px;
@@ -217,6 +218,7 @@
   background: #848484;
   opacity: 0.14;
 }
+
 .day::before {
   content: '';
   width: 100%;
@@ -228,9 +230,11 @@
   background: #848484;
   opacity: 0.2;
 }
+
 .day.selected::after {
   display: none;
 }
+
 .day.selected::before {
   display: none;
 }

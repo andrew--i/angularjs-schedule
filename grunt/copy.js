@@ -37,6 +37,15 @@ module.exports = {
       cwd: 'bower_components/bootstrap/dist/fonts/'
     }]
   },
+  assets: {
+    files: [{
+      expand: true,
+      dest: 'dist/assets',
+      src: '*',
+      cwd: 'app/assets/'
+    }]
+
+  },
   html: {
     files: [{
       expand: true,

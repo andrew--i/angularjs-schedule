@@ -1,18 +1,18 @@
 'use strict';
-angular.module('rbt.employee-schedule').directive('calendar', /*@ngInject*/function ($timeout, calendarDaysGenerator, employeeSchedule, daysUtils) {
+angular.module('rbt.employee-schedule').directive('calendar', /*@ngInject*/function ($timeout, daysUtils) {
   return {
     restrict: 'E',
+    scope: {
+      "weeks": "="
+    },
     templateUrl: "assets/view/employee-schedule/directives/calendar/calendar.html",
     link: function (scope) {
 
-      var currentMonth = undefined;
+      scope.currentMonth = undefined;
 
       function setMonth(month, scope) {
-        currentMonth = month;
-        scope.weeks = calendarDaysGenerator.generate(month);
-        employeeSchedule.getEmployeeSchedule(undefined, currentMonth).then(function (result) {
-          scope.weeks = calendarDaysGenerator.generateEmployeeCalendar(result, month)
-        })
+        scope.currentMonth = month;
+        scope.$emit("setup_month", month);
       }
 
       setMonth(moment(), scope);
@@ -32,12 +32,12 @@ angular.module('rbt.employee-schedule').directive('calendar', /*@ngInject*/funct
 
 
       scope.next = function () {
-        var next = currentMonth.clone();
+        var next = scope.currentMonth.clone();
         setMonth(next.month(next.month() + 1), scope);
       };
 
       scope.previous = function () {
-        var previous = currentMonth.clone();
+        var previous = scope.currentMonth.clone();
         setMonth(previous.month(previous.month() - 1), scope);
       };
 
@@ -80,7 +80,6 @@ angular.module('rbt.employee-schedule').directive('calendar', /*@ngInject*/funct
           scope.selectedDay = scope.infoIconDay.day.date;
         }
       }
-
     },
     controllerAs: "calendar"
   };

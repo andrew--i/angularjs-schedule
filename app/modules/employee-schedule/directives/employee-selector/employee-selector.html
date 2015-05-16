@@ -1,14 +1,22 @@
 <div class="emplpoyee-selector-container container-fluid">
-  <div class="col-md-11">
-    <input type="text" class="form-control employee-selector" placeholder="Some employee">
-  </div>
-  <div class="col-md-1">
-    <button type="submit" class="btn btn-success btn-download">Скачать</button>
-  </div>
+  <div class="row">
+    <div class="col-md-10">
+      <input type="text" class="form-control employee-selector" ng-model="employee.fio"
+             placeholder="Введите имя сотрудника">
+    </div>
 
-  <div class="col-md-12 employee-info">
-    <span class="employee-info-item"><span class="employee-info-item-name">Должность:</span> Старший Супервайзер</span>
-    <span class="employee-info-item"><span class="employee-info-item-name">Телефон:</span> +7 (918) 980-04-25</span>
-    <span class="employee-info-item"><span class="employee-info-item-name">Начало работы:</span>12 апреля 2013 г.</span>
+    <div class="col-md-1">
+      <button type="submit" class="btn btn-success btn-download">Скачать</button>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-12 employee-info">
+    <span class="employee-info-item"><span
+      class="employee-info-item-name">Должность:</span> {{employee.staffing}}</span>
+      <span class="employee-info-item"><span class="employee-info-item-name">Телефон:</span> {{employee.tel}}</span>
+    <span class="employee-info-item"><span
+      class="employee-info-item-name">Начало работы:</span>{{employee.workSince}}</span>
+    </div>
   </div>
 </div>
