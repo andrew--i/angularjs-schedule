@@ -20,36 +20,12 @@
        ng-class="{
   'day-tooltip-top': day.weekNumber > 2,
   'day-tooltip-bottom': day.weekNumber <= 2}" class="day-edit-container">
-    <div class="day-edit-item row">
+    <div class="day-edit-item row" ng-repeat="dayEditType in editDayTypes">
       <div class="col-sm-3">
-        <div class="green-circle"></div>
+        <div class="{{dayEditType.circle_class}}"></div>
       </div>
       <div class="tooltip-item-name col-sm-9">
-        Рабочий день
-      </div>
-    </div>
-    <div class="day-edit-item row">
-      <div class="col-sm-3">
-        <div class="white-circle"></div>
-      </div>
-      <div class="tooltip-item-name col-sm-9">
-        Не рабочий день
-      </div>
-    </div>
-    <div class="day-edit-item row">
-      <div class="col-sm-3">
-        <div class="orange-circle"></div>
-      </div>
-      <div class="tooltip-item-name col-sm-9">
-        Пропуск
-      </div>
-    </div>
-    <div class="day-edit-item row">
-      <div class="col-sm-3">
-        <div class="red-circle"></div>
-      </div>
-      <div class="tooltip-item-name col-sm-9">
-        Прогул
+        {{dayEditType.caption}}
       </div>
     </div>
   </div>
