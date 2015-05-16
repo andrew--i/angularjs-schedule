@@ -10,7 +10,7 @@
       'day-info': isEmployeeInfoDay && isSelectedDay && !isEditDay && day.dayType === 1,
       'edit-day': isEditDay && isSelectedDay
       }">
-  <span ng-if="isEditDay ? true : isInfoIconDay"
+  <span ng-if="isEditDay ? true : isInfoIconDay && day.isCurrentMonth"
         class="day-info-icon"
         ng-click="editEmployeeDay($event)"></span>
   {{day.number}}
