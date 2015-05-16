@@ -4,7 +4,7 @@
   .border-box;
   border: none;
   position: relative;
-  font-size: 15pt;
+  font-size: 15px;
   text-align: right;
   .vertical-centre(80px);
   background: white;
@@ -35,10 +35,10 @@
 
   .employee-day-tooltip {
     position: absolute;
-    width: 200px;
+    width: 202px;
     color: black;
     background: white;
-    height: 170px;
+    height: 179px;
     line-height: 100px;
     text-align: center;
     visibility: hidden;
@@ -129,45 +129,51 @@
 
   .day-tooltip-item {
     width: 100%;
-    height: 170/3px;
+    height: 179/3px;
     vertical-align: middle;
-    line-height: 170/3px;
+    line-height: 179/3px;
     text-align: left;
     left: 0;
     border-bottom: solid 1px @border-colour;
-    margin: 0 0 0 0;
+
 
     > div.tooltip-item-value {
       padding-left: 15px;
       padding-right: 5px;
-      font-size: 2em;
+      font-size: 35px;
+      width: 60%;
+      float: left;
+      font-weight: 100;
       .red-tooltip-value {
         color: red;
       }
     }
 
     > div.tooltip-item-name {
-      color: #c2c2c2;
-      font-size: 0.9em;
+      color: #929292;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
       line-height: 15px;
       padding-top: 15px;
       padding-left: 0px;
+      width: 40%;
+      float: left;
     }
   }
 
   .day-edit-item {
     width: 100%;
-    height: 170/4px;
+    height: 179/4px;
     vertical-align: middle;
-    line-height: 170/4px;
+    line-height: 179/4px;
     text-align: left;
     left: 0;
     border-bottom: solid 1px @border-colour;
     margin: 0 0 0 0;
 
     > div.tooltip-item-name {
-      color: #c2c2c2;
-      font-size: 0.9em;
+      color: #929292;
+      font-size: 13px;
       line-height: 18px;
       padding-top: 15px;
       padding-left: 0px;

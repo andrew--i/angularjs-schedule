@@ -58,27 +58,27 @@
        ng-class="{
   'day-tooltip-top': day.weekNumber > 2,
   'day-tooltip-bottom': day.weekNumber <= 2}">
-    <div class="day-tooltip-item row">
-      <div class="tooltip-item-value col-sm-7">
-        <span class="red-tooltip-value">{{day.visitedPoints.current}} </span> / {{day.visitedPoints.total}}
+    <div class="day-tooltip-item">
+      <div class="tooltip-item-value">
+        <span class="red-tooltip-value">{{day.visitedPoints.current}} </span>/{{day.visitedPoints.total}}
       </div>
-      <div class="tooltip-item-name col-sm-5">
+      <div class="tooltip-item-name">
         Точек маршрута
       </div>
     </div>
-    <div class="day-tooltip-item row">
-      <div class="tooltip-item-value col-sm-7">
-        <span class="red-tooltip-value">{{day.questionnaires.current}} </span> / {{day.questionnaires.total}}
+    <div class="day-tooltip-item">
+      <div class="tooltip-item-value">
+        <span class="red-tooltip-value">{{day.questionnaires.current}} </span>/{{day.questionnaires.total}}
       </div>
-      <div class="tooltip-item-name col-sm-5">
+      <div class="tooltip-item-name">
         Опросных листов
       </div>
     </div>
-    <div class="day-tooltip-item row">
-      <div class="tooltip-item-value col-sm-7">
-        <span class="red-tooltip-value">{{day.totalTime | statisticTimeFilter}} </span>
+    <div class="day-tooltip-item">
+      <div class="tooltip-item-value">
+        <span class="red-tooltip-value">{{day.totalTime | statisticTimeFilter}}</span>
       </div>
-      <div class="tooltip-item-name col-sm-5">
+      <div class="tooltip-item-name">
         Отработано времени
       </div>
     </div>

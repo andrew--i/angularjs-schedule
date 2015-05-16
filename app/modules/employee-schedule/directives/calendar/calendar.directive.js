@@ -20,7 +20,7 @@ angular.module('rbt.employee-schedule').directive('calendar', /*@ngInject*/funct
       scope.selectedDay = undefined;
 
       scope.isSelectedDay = function (day) {
-        return daysUtils.isSameDate(scope.selectedDay, day.date);
+        return day.isCurrentMonth && daysUtils.isSameDate(scope.selectedDay, day.date);
       };
 
       scope.selectDay = function (day, event) {
