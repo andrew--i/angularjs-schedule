@@ -66,6 +66,23 @@
     border-left: 8px solid transparent;
   }
 
+
+  .day-edit-container {
+    width: 202px;
+    height: 179px;
+    background-color: white;
+
+    :last-child {
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    :first-child {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+  }
+
   > div.day-tooltip-top {
     .employee-day-tooltip
   }
@@ -90,6 +107,7 @@
   }
 
   &.day-info {
+    cursor: auto;
     > div.day-tooltip-bottom {
       visibility: visible;
       margin-top: 65px;
@@ -97,7 +115,7 @@
     }
     > div.day-tooltip-top {
       visibility: visible;
-      margin-top: -210px;
+      margin-top: -218px;
       z-index: 999;
     }
   }
@@ -110,7 +128,7 @@
     }
     > div.day-tooltip-top {
       visibility: visible;
-      margin-top: -210px;
+      margin-top: -218px;
       z-index: 999;
     }
   }
@@ -136,7 +154,6 @@
     left: 0;
     border-bottom: solid 1px @border-colour;
 
-
     > div.tooltip-item-value {
       padding-left: 15px;
       padding-right: 5px;
@@ -144,8 +161,9 @@
       width: 60%;
       float: left;
       font-weight: 100;
+      color: #929292;
       .red-tooltip-value {
-        color: red;
+        color: #ee3423;
       }
     }
 
@@ -170,6 +188,11 @@
     left: 0;
     border-bottom: solid 1px @border-colour;
     margin: 0 0 0 0;
+
+    &.row:hover {
+      background-color: rgba(12, 157, 216, 0.1);
+      cursor: pointer;
+    }
 
     > div.tooltip-item-name {
       color: #929292;
